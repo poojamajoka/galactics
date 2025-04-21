@@ -24,7 +24,7 @@ public class SatelliteServiceImpl implements SatelliteService {
                 .orElseThrow(() -> new SatelliteNotFoundException("Satellite with ID " + id + " not found"));
 
         if (satellite.isDecommissioned()) {
-            throw new IllegalStateException("Cannot update a decommissioned satellite");
+            throw new SatelliteNotFoundException("Cannot update a decommissioned satellite");
         }
 
         satellite.setName(dto.name());
